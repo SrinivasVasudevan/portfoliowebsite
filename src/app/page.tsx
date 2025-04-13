@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Github, Linkedin, Twitter, BookOpen, FileText } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import bgImage from '../../public/bg_image.webp'
 
 export default function Home() {
   const [selectedYear, setSelectedYear] = useState<string | null>(null);
@@ -81,7 +82,7 @@ export default function Home() {
     <>
       {/* Background with LiDAR effect */}
       <div className="fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-[url('/bg_image.webp')] bg-cover bg-center bg-no-repeat animate-pulse-subtle" />
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat animate-pulse-subtle" style={{backgroundImage: `url(${bgImage.src})`}} />
         <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]" />
       </div>
 
