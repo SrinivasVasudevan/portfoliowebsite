@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Github, Linkedin, Twitter, BookOpen } from "lucide-react";
+import { Github, Linkedin, Twitter, BookOpen, ArrowDown, FileText } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -51,7 +51,6 @@ export default function Home() {
       year: "2022",
       link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=_aOnuYEAAAAJ&authuser=1&citation_for_view=_aOnuYEAAAAJ:u-x6o8ySG0sC",
     },
-    // Add more publications as needed
   ];
 
   const years = Array.from(new Set(projects.map(project => project.year))).sort((a, b) => b.localeCompare(a));
@@ -87,7 +86,7 @@ export default function Home() {
           I like building cool things
           <span className="ml-2 w-2 h-6 bg-foreground animate-blink" />
         </p>
-        <div className="flex gap-4">
+        <div className="flex gap-4 mb-8">
           {socialLinks.map((social) => (
             <Button
               key={social.name}
@@ -102,10 +101,30 @@ export default function Home() {
             </Button>
           ))}
         </div>
+
+        {/* Resume Preview Card */}
+        <Link 
+          href="/Resume_SrinivasVasudevan.pdf" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="group py-20"
+        >
+          <Card className="w-64 h-40 bg-card/50 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-lg">
+            <CardHeader className="flex flex-row items-center gap-2">
+              <FileText className="h-6 w-6 text-primary" />
+              <CardTitle className="text-lg">Resume</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Click to view my professional experience and skills
+              </p>
+            </CardContent>
+          </Card>
+        </Link>
       </section>
 
       {/* Publications Section */}
-      <section className="py-16">
+      <section>
         <h2 className="text-3xl font-bold mb-8 text-center flex items-center justify-center gap-2">
           <BookOpen className="h-8 w-8" />
           Publications
