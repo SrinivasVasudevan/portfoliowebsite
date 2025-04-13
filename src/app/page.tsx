@@ -78,127 +78,136 @@ export default function Home() {
   ];
 
   return (
-    <div className="container mx-auto px-4 py-8 min-h-screen bg-background text-foreground">
-      {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center min-h-[80vh] text-center">
-        <h1 className="text-4xl font-bold mb-4">Srinivas Vasudevan</h1>
-        <p className="text-xl text-muted-foreground mb-8 max-w-2xl flex items-center">
-          I like building cool things
-          <span className="ml-2 w-2 h-6 bg-foreground animate-blink" />
-        </p>
-        <div className="flex gap-4 mb-8">
-          {socialLinks.map((social) => (
-            <Button
-              key={social.name}
-              variant="outline"
-              size="icon"
-              asChild
-            >
-              <a href={social.url} target="_blank" rel="noopener noreferrer">
-                {social.icon}
-                <span className="sr-only">{social.name}</span>
-              </a>
-            </Button>
-          ))}
-        </div>
+    <>
+      {/* Background with LiDAR effect */}
+      <div className="fixed inset-0 -z-10">
+        <div className="absolute inset-0 bg-[url('/bg_image.webp')] bg-cover bg-center bg-no-repeat animate-pulse-subtle" />
+        <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]" />
+      </div>
 
-        {/* Resume Preview Card */}
-        <Link 
-          href="/Resume_SrinivasVasudevan.pdf" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="group py-20"
-        >
-          <Card className="w-64 h-40 bg-card/50 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-lg">
-            <CardHeader className="flex flex-row items-center gap-2">
-              <FileText className="h-6 w-6 text-primary" />
-              <CardTitle className="text-lg">Resume</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Click to view my professional experience and skills
-              </p>
-            </CardContent>
-          </Card>
-        </Link>
-      </section>
-
-      {/* Publications Section */}
-      <section>
-        <h2 className="text-3xl font-bold mb-8 text-center flex items-center justify-center gap-2">
-          <BookOpen className="h-8 w-8" />
-          Publications
-        </h2>
-        <div className="grid grid-cols-1 gap-6 max-w-4xl mx-auto">
-          {publications.map((publication, index) => (
-            <Link 
-              key={index} 
-              href={publication.link} 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              <Card className="transition-all hover:scale-[1.02] hover:shadow-lg bg-card/50 backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle className="text-xl">{publication.title}</CardTitle>
-                  <CardDescription className="text-base">
-                    {publication.authors}
-                  </CardDescription>
-                  <CardDescription>
-                    {publication.conference} • {publication.year}
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* Projects Timeline */}
-      <section className="py-16">
-        <h2 className="text-3xl font-bold mb-8 text-center">Projects</h2>
-        
-        {/* Horizontal Timeline */}
-        <div className="relative mb-12">
-          <div className="absolute left-0 right-0 top-1/2 h-0.5 bg-muted-foreground/20" />
-          <div className="flex justify-between relative">
-            {years.map((year) => (
-              <button
-                key={year}
-                onClick={() => setSelectedYear(selectedYear === year ? null : year)}
-                className={`relative z-10 px-4 py-2 rounded-full transition-all duration-300 ${
-                  selectedYear === year
-                    ? "bg-primary text-primary-foreground scale-110"
-                    : "bg-muted hover:bg-muted-foreground/20"
-                }`}
+      <div className="relative container mx-auto px-4 py-8 min-h-screen">
+        {/* Hero Section */}
+        <section className="flex flex-col items-center justify-center min-h-[80vh] text-center">
+          <h1 className="text-4xl font-bold mb-4 text-white">Srinivas Vasudevan</h1>
+          <p className="text-xl text-gray-200 mb-8 max-w-2xl flex items-center">
+            I like building cool things
+            <span className="ml-2 w-2 h-6 bg-white animate-blink" />
+          </p>
+          <div className="flex gap-4 mb-8">
+            {socialLinks.map((social) => (
+              <Button
+                key={social.name}
+                variant="outline"
+                size="icon"
+                className="bg-black/40 hover:bg-black/60 border-white/20"
+                asChild
               >
-                {year}
-              </button>
+                <a href={social.url} target="_blank" rel="noopener noreferrer">
+                  {social.icon}
+                  <span className="sr-only">{social.name}</span>
+                </a>
+              </Button>
             ))}
           </div>
-        </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {filteredProjects.map((project, index) => (
-            <Link 
-              key={index} 
-              href={project.link} 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              <Card className="h-full transition-all hover:scale-[1.02] hover:shadow-lg bg-card/50 backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle>{project.title}</CardTitle>
-                  <CardDescription>{project.year}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p>{project.description}</p>
-                </CardContent>
-              </Card>
-            </Link>
-          ))}
-        </div>
-      </section>
-    </div>
+          {/* Resume Preview Card */}
+          <Link 
+            href="/Resume_SrinivasVasudevan.pdf" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="group py-20"
+          >
+            <Card className="w-64 h-40 bg-black/40 backdrop-blur-sm border-white/20 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:bg-black/60">
+              <CardHeader className="flex flex-row items-center gap-2">
+                <FileText className="h-6 w-6 text-white" />
+                <CardTitle className="text-lg text-white">Resume</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-gray-300">
+                  Click to view my professional experience and skills
+                </p>
+              </CardContent>
+            </Card>
+          </Link>
+        </section>
+
+        {/* Publications Section */}
+        <section>
+          <h2 className="text-3xl font-bold mb-8 text-center flex items-center justify-center gap-2 text-white">
+            <BookOpen className="h-8 w-8" />
+            Publications
+          </h2>
+          <div className="grid grid-cols-1 gap-6 max-w-4xl mx-auto">
+            {publications.map((publication, index) => (
+              <Link 
+                key={index} 
+                href={publication.link} 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                <Card className="transition-all duration-300 hover:scale-[1.02] hover:shadow-lg bg-black/40 backdrop-blur-sm border-white/20 hover:bg-black/60">
+                  <CardHeader>
+                    <CardTitle className="text-xl text-white">{publication.title}</CardTitle>
+                    <CardDescription className="text-base text-gray-300">
+                      {publication.authors}
+                    </CardDescription>
+                    <CardDescription className="text-gray-400">
+                      {publication.conference} • {publication.year}
+                    </CardDescription>
+                  </CardHeader>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Projects Timeline */}
+        <section className="py-16">
+          <h2 className="text-3xl font-bold mb-8 text-center text-white">Projects</h2>
+          
+          {/* Horizontal Timeline */}
+          <div className="relative mb-12">
+            <div className="absolute left-0 right-0 top-1/2 h-0.5 bg-white/20" />
+            <div className="flex justify-between relative">
+              {years.map((year) => (
+                <button
+                  key={year}
+                  onClick={() => setSelectedYear(selectedYear === year ? null : year)}
+                  className={`relative z-10 px-4 py-2 rounded-full transition-all duration-300 ${
+                    selectedYear === year
+                      ? "bg-white text-black scale-110"
+                      : "bg-black/40 hover:bg-black/60 text-white"
+                  }`}
+                >
+                  {year}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Projects Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {filteredProjects.map((project, index) => (
+              <Link 
+                key={index} 
+                href={project.link} 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                <Card className="h-full transition-all hover:scale-[1.02] hover:shadow-lg bg-black/40 backdrop-blur-sm border-white/20 hover:bg-black/60">
+                  <CardHeader>
+                    <CardTitle className="text-white">{project.title}</CardTitle>
+                    <CardDescription className="text-gray-400">{project.year}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-300">{project.description}</p>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </section>
+      </div>
+    </>
   );
 }

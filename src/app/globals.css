@@ -211,6 +211,25 @@
   animation: pulse-ring 2s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
+@keyframes pulse-subtle {
+  0% {
+    filter: blur(5px) brightness(0.7);
+    opacity: 0.85;
+  }
+  50% {
+    filter: blur(2px) brightness(1.1);
+    opacity: 1;
+  }
+  100% {
+    filter: blur(5px) brightness(0.7);
+    opacity: 0.85;
+  }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 4s ease-in-out infinite;
+}
+
 /* Timeline styles */
 .timeline-button {
   position: relative;
