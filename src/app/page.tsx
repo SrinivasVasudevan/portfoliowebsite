@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Github, Linkedin, Twitter, BookOpen, ArrowDown, FileText } from "lucide-react";
+import { Github, Linkedin, Twitter, BookOpen, FileText } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
